@@ -15,7 +15,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="flex items-center justify-between p-4 bg-slate-700 shadow-lg">
+        <nav className="flex items-center justify-between p-4 bg-slate-700 shadow-lg sticky top-0 z-10">
             <div className="flex items-center space-x-4">
                 {isSideBarOpen ? (
                     <FaTimes className="text-white cursor-pointer transform hover:scale-110 transition duration-500 ease-in-out" onClick={toggleSideBar} />
@@ -37,7 +37,7 @@ export default function Navbar() {
                 <Profile />
             </div>
             {isSideBarOpen && (
-                <SideBar />
+                <SideBar toggleSideBar={toggleSideBar} />
             )}
         </nav>
     );

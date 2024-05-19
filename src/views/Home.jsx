@@ -1,7 +1,4 @@
 import React from 'react';
-import servicio from '../../public/servicio.webp';
-import servicio1 from '../../public/servicio1.webp';
-import servicio2 from '../../public/servicio2.webp';
 import {
     Carousel,
     CarouselContent,
@@ -9,30 +6,36 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import Brands from '@/components/Brands';
+import Hero from '@/components/Hero';
 
 
 const Home = () => {
     return (
         <div className="container mx-auto py-2">
-            <h1 className="text-4xl font-bold text-center">Home</h1>
+            <Hero />
             <div className="mx-auto w-8/12">
                 <Carousel>
                     <CarouselContent>
                         <CarouselItem>
-                            <img src={servicio1} alt="Image" className="rounded-xl object-cover" />
+                            <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="WebDev" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
                         <CarouselItem>
-                            <img src={servicio1} alt="Image" className="rounded-xl object-cover" />
+                            <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="TechSupport" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
                         <CarouselItem>
-                            <img src={servicio1} alt="Image" className="rounded-xl object-cover" />
+                            <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="Apps" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
             </div>
-            <div className="cover"></div>
+            <div className="flex justify-center">
+                <div className="w-8/12">
+                    <Brands />
+                </div>
+            </div>
         </div>
     );
 };

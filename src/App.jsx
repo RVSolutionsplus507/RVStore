@@ -2,9 +2,10 @@ import React from 'react';
 import Navbar from '@/views/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '@/views/Home'; 
-import Services from '@/views/Services';
+import Category from '@/views/Category';
 import SingleService from '@/views/SingleService';
 import NotFound  from '@/views/NotFound';
+import Services from '@/views/Services';
 
 
 
@@ -17,8 +18,9 @@ export default function App() {
                     <Routes>
                         <Route path="*" element={<NotFound />} />
                         <Route path="/" element={<Home />} />
-                        <Route path="/services/:category" element={<Services />} />
-                        <Route path="/service/:category/:id?" element={<SingleService />} />
+                        <Route path="/services" element={<Services />} />
+                        <Route path="/services/:category" element={<Category />} />
+                        <Route path="/service/:category/:id" element={<SingleService />} />
                     </Routes>
                 </BrowserRouter>
             </main>
