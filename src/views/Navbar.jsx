@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import SideBar from '@/components/SideBar';
 import SearchBar from '@/components/SearchBar';
@@ -21,8 +22,12 @@ export default function Navbar() {
                 ) : (
                     <FaBars className="text-white cursor-pointer transform hover:scale-110 transition duration-500 ease-in-out" onClick={toggleSideBar} />
                 )}
-                <img src={logorvs} alt="RVStore Logo" className="w-16 h-12 lg:w-24 lg:h-14" />
-                <span className="text-white font-lato-bold text-bold text-xl">RVStore</span>
+                <Link to="/" className="cursor-pointer">
+                    <img src={logorvs} alt="RVStore Logo" className="w-16 h-12 lg:w-24 lg:h-14" />
+                </Link>
+                <Link to="/" className="cursor-pointer">
+                    <span className="text-white font-lato-bold text-bold text-xl">RVStore</span>
+                </Link>
             </div>
             <div className="hidden lg:block w-1/2">
                 <SearchBar />
