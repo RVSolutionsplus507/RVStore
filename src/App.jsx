@@ -6,24 +6,27 @@ import Category from '@/views/Category';
 import SingleService from '@/views/SingleService';
 import NotFound  from '@/views/NotFound';
 import Services from '@/views/Services';
+import { CartProvider } from './context/CartContext';
 
 
 
 export default function App() {
     return (
         <>
+        <CartProvider>
             <main>
                 <BrowserRouter>
                     <Navbar />
                     <Routes>
                         <Route path="*" element={<NotFound />} />
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<Services />} />
                         <Route path="/services" element={<Services />} />
                         <Route path="/services/:category" element={<Category />} />
                         <Route path="/service/:category/:id" element={<SingleService />} />
                     </Routes>
                 </BrowserRouter>
             </main>
+        </CartProvider>
         </>
     );
 }

@@ -7,6 +7,7 @@ const Services = () => {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         const fetchData = async () => {
             const servicesData = await getAllServices();
@@ -47,7 +48,7 @@ const Services = () => {
                                     </p>
                                 ))}
                                 <button className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 my-2 rounded-xl">
-                                    <Link to={`/services/${service.category}`}>Subscribe</Link>
+                                    <Link to={`/service/${service.category}/${service.id}`}>Subscribe</Link>
                                 </button>
                             </div>
                         ) : (
@@ -56,7 +57,7 @@ const Services = () => {
                                     Price: <span className="font-bold">{service.price}</span>
                                 </p>
                                 <button className=" bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 my-2 rounded">
-                                    <Link to={`/services/${service.category}`}>Buy Now</Link>
+                                    <Link to={`/service/${service.category}/${service.id}`}>Buy Now</Link>
                                 </button>
                             </div>
                         )}

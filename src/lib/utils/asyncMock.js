@@ -8,7 +8,8 @@ const servicesData = {
             title: "Web Development with APIs",
             description: "We Build and Deploy Web Apps with APIs.",
             image: "https://i.ibb.co/JCWPyLd/webdev4.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 2,
@@ -16,7 +17,8 @@ const servicesData = {
             title: "Web Development Portfolios",
             description: "We Build and Deploy Web Portfolios.",
             image: "https://i.ibb.co/V2Zf3y7/webdev5.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 3,
@@ -24,7 +26,8 @@ const servicesData = {
             title: "Web Development SPA",
             description: "We Build and Deploy Single Page Applications.",
             image: "https://i.ibb.co/9nWYBsD/webdev3.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 11,
@@ -32,7 +35,8 @@ const servicesData = {
             title: "WebSide with Wordpress",
             description: "We Build and Deploy Wordpress websites.",
             image: "https://i.ibb.co/jJZ0pNQ/webdev2.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 12,
@@ -40,7 +44,8 @@ const servicesData = {
             title: "Landing Pages",
             description: "We Build and Deploy Landing Pages with Astro and SEO.",
             image: "https://i.ibb.co/JjJSd7p/webdev1.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 4,
@@ -53,6 +58,7 @@ const servicesData = {
                 { id: 2, name: "Two Users", channels: "10,000+", price: 12.00 },
                 { id: 3, name: "Three Users", channels: "10,000+", price: 15.00 },
             ],
+            quantity: 0
         },
         {
             id: 5,
@@ -65,6 +71,7 @@ const servicesData = {
                 { id: 2, name: "Two Users", channels: "10,000+", price: 33.00 },
                 { id: 3, name: "Three Users", channels: "10,000+", price: 39.00 },
             ],
+            quantity: 0
         },
         {
             id: 6,
@@ -77,6 +84,7 @@ const servicesData = {
                 { id: 2, name: "Two Users", channels: "10,000+", price: 60.00 },
                 { id: 3, name: "Three Users", channels: "10,000+", price: 72.00 },
             ],
+            quantity: 0
         },
         {
             id: 7,
@@ -89,6 +97,7 @@ const servicesData = {
                 { id: 2, name: "Two Users", channels: "10,000+", price: 108.00 },
                 { id: 3, name: "Three Users", channels: "10,000+", price: 120.00 },
             ],
+            quantity: 0
         },
         {
             id: 8,
@@ -98,6 +107,7 @@ const servicesData = {
             image: "https://i.ibb.co/6yCTyXR/webtech2.webp",
             billing: "Hourly",
             price: 9.99,
+            quantity: 0
         },
         {
             id: 9,
@@ -107,6 +117,7 @@ const servicesData = {
             image: "https://i.ibb.co/2hf912R/webtech1.webp",
             billing: "On Demand",
             price: 60.00,
+            quantity: 0
         },
         {
             id: 10,
@@ -116,6 +127,7 @@ const servicesData = {
             image: "https://i.ibb.co/cxL9bYz/webtech3.webp",
             billing: "Hourly",
             price: 20.00,
+            quantity: 0
         },
         {
             id: 13,
@@ -123,7 +135,8 @@ const servicesData = {
             title: "Retail Apps Development",
             description: "Get you team closer to your customers.",
             image: "https://i.ibb.co/L89DfGv/webapp1.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 14,
@@ -131,7 +144,8 @@ const servicesData = {
             title: "Chat Apps Development",
             description: "Customized Chat Apps for your business.",
             image: "https://i.ibb.co/YtGH9gm/webapp4.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 15,
@@ -139,7 +153,8 @@ const servicesData = {
             title: "ERP and CRM Apps Development",
             description: "Get your leads managed and centralized.",
             image: "https://i.ibb.co/K6qS9cm/webapp2.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         {
             id: 16,
@@ -147,7 +162,8 @@ const servicesData = {
             title: "Payments Apps Development",
             description: "Get Paid by your customers.",
             image: "https://i.ibb.co/F4z83dZ/webapp3.webp",
-            price: "Get a Quote"
+            price: "Get a Quote",
+            quantity: 0
         },
         
     ],

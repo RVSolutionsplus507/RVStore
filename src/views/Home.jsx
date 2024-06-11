@@ -12,18 +12,18 @@ import Hero from '@/components/Hero';
 
 const Home = () => {
     return (
-        <div className="container mx-auto py-2">
+        <div className="container mx-auto">
             <Hero />
             <div className="mx-auto w-8/12">
                 <Carousel>
                     <CarouselContent>
-                        <CarouselItem>
+                        <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                             <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="WebDev" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
-                        <CarouselItem>
+                        <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                             <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="TechSupport" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
-                        <CarouselItem>
+                        <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                             <img src="https://i.ibb.co/JCWPyLd/webdev4.webp" alt="Apps" className="w-full rounded-xl object-contain" />
                         </CarouselItem>
                     </CarouselContent>
