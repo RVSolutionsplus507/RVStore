@@ -9,16 +9,15 @@ function CartProvider({ children }) {
     const { notifySuccess } = useToast();
 
     function addToCart(service) {
-        setCart((currentCart) => {
-            const itemIndex = currentCart.findIndex((item) => item.id === service.id);
-            if (itemIndex > -1) {
-                const newCart = [...currentCart];
-                newCart[itemIndex].quantity += 1;
-                return newCart;
-            }
-            return [...currentCart, { ...service, quantity: 1 }];
-        });
-        localStorage.setItem("cart", JSON.stringify(cart));
+      setCart((prevCart) => {
+        const itemIndex = prevCart.findIndex((item) => item.id === service.id);
+        if (itemIndex !== -1) {
+          const newCart = [...prevCart];
+          newCart[itemIndex].quantity += service.quantity;
+          return newCart;
+        }
+        return [...prevCart, service];
+      });
         notifySuccess("Item added to cart");
     }
 
@@ -29,13 +28,11 @@ function CartProvider({ children }) {
     function removeFromCart(item) {
         const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
         setCart(newCart);
-        localStorage.setItem("cart", JSON.stringify(newCart));
         notifySuccess("Item removed from cart");
     }
 
     function clearCart() {
         setCart([]);
-        localStorage.removeItem("cart");
         notifySuccess("Cart cleared");
     }
 

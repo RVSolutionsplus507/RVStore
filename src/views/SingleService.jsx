@@ -35,7 +35,7 @@ export default function SingleService() {
     };
 
     const handleAddToCart = () => {
-        addToCart({ ...service, quantity});
+        addToCart({ ...service, quantity });
         if (!addedToCart) {
             setAddedToCart(true);
         }
