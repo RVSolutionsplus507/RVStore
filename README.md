@@ -2,7 +2,7 @@
 
 Welcome to RVS Store! This project is a full-stack e-commerce application built with React and Vite. It provides a minimal setup to get React working in Vite with HMR (Hot Module Replacement) and some ESLint rules.
 
-![RVS Store](https://ibb.co/k476XTP)
+![RVS Store](https://i.ibb.co/QPgjMVx/cover.png)
 
 ## Getting Started
 
