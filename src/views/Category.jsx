@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { getServices } from '@/lib/utils/asyncMock';
+import { getCategory } from '@/services/firebase';
 import { useParams, Link } from 'react-router-dom';
-import { Grid } from 'react-loader-spinner'
-
+import { Grid } from 'react-loader-spinner';
 
 const Category = () => {
     const { category } = useParams();
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         const fetchServices = async () => {
-            const servicesData = await getServices();
-            setServices(servicesData.services);
+            const data = await getCategory(category);
+            setServices(data);
             setLoading(false);
         };
-
         fetchServices();
-    }, []);
+    }, [category]);
 
     const filteredServices = services.filter(service => service.category === category);
 
@@ -36,79 +33,40 @@ const Category = () => {
                     wrapperClass="grid-wrapper"
                 />
             )}
-            {category === 'IPTV' ? (
-                filteredServices.map((service) => (
-                    <div
-                        key={service.id}
-                        className="max-w-sm mx-4 my-4 rounded-t-3xl border shadow-md overflow-hidden w-full sm:w-1/2"
-                    >
-                        <img
-                            className="w-9/12 object-cover rounded-t-3xl mx-auto pb-2"
-                            src={service.image}
-                            alt={service.title}
-                        />
-                        <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-gray-800">{service.title}</div>
-                            <p className="text-gray-600 text-base">{service.description}</p>
-                        </div>
-                        <div className="px-6 py-4 border-t border-gray-200">
-                            <h4 className="font-bold mb-2 text-gray-800">Price:</h4>
-                            <ul className="list-disc pl-4 text-gray-600">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 justify-center items-center">
+                {filteredServices.map((service) => (
+                    <div key={service.id} className="card bg-slate-100 rounded-t-xl shadow-lg text-center h-full">
+                        <img src={service.image} alt={service.title} className="w-11/12 h-auto mx-auto rounded-t-xl mt-6" />
+                        <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                        <p className="text-lg text-gray-600 mb-2 overflow-hidden">{service.description}</p>
+                        {service.category === 'IPTV' ? (
+                            <div>
                                 {service.price.map((price) => (
-                                    <li key={price.id} className="mb-1">
-                                        <span className="font-medium">{price.name}: </span>
-                                        <span className="inline-block mr-1">$</span>
-                                        {price.price}
-                                    </li>
+                                    <p key={service.id} className="text-xl text-green-500 font-bold">
+                                        <span>{price.name}:</span> <span className="font-bold">${price.price}</span>
+                                    </p>
                                 ))}
-                            </ul>
-                        </div>
-                        {
-                            service.channels && (
-                                <div className="px-6 py-4 border-t border-gray-200">
-                                    <h4 className="font-bold mb-2 text-gray-800">Channels:</h4>
-                                    <p className="text-gray-600 text-base">{service.channels}</p>
+                                <div className="flex justify-center items-end">
+                                    <button className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 my-2 rounded-xl">
+                                        <Link to={`/service/${service.category}/${service.id}`}>Subscribe</Link>
+                                    </button>
                                 </div>
-                            )
-                        }
-                        <div className="px-6 py-4 border-t border-gray-200">
-                            <button className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-xl">
-                                <Link to={`/service/${category}/${service.id}`}>Subscribe
-                                </Link>
-                            </button>
-                        </div>
+                            </div>
+                        ) : (
+                            <div>
+                                <p className="text-green-500 text-xl ">
+                                    Price: <span className="font-bold">{service.price}</span>
+                                </p>
+                                <div className="flex justify-center items-end">
+                                    <button className=" bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 my-2 rounded">
+                                        <Link to={`/service/${service.category}/${service.id}`}>Buy Now</Link>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                ))
-            ) : (
-                filteredServices.map((service) => (
-                    <div key={service.id} className="max-w-sm mx-4 my-4 rounded-t-3xl border shadow-md overflow-hidden w-full sm:w-1/2 ">
-                        <img
-                            className="w-full object-cover rounded-t-3xl mx-auto pb-4"
-                            src={service.image}
-                            alt={service.title}
-                        />
-                        <div className="px-6 py-4 text-center">
-                            <div className="font-bold text-xl mb-2">{service.title}</div>
-                            <p className="text-gray-700 text-base">{service.description}</p>
-                        </div>
-                        <div className="px-6 py-4 text-center">
-                            <h4 className="font-bold mb-2">Price:</h4>
-                            <ul>
-                                <li className="text-gray-700 text-base font-bold text-center">
-                                    <span className="mr-1">$</span>
-                                    {service.price}
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-6 py-4 flex justify-end ">
-                            <button className=" bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded">
-                                <Link to={`/service/${category}/${service.id}`}>Buy Now
-                                </Link>
-                            </button>
-                        </div>
-                    </div>
-                ))
-            )}
+                ))}
+            </div>
         </div>
     );
 };

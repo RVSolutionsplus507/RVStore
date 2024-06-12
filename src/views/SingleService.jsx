@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { getServiceByCategory } from '@/lib/utils/asyncMock';
-import { Link, useParams } from 'react-router-dom';
+import { getSingleCategory } from '@/services/firebase';
+import { useParams } from 'react-router-dom';
 import { Grid } from 'react-loader-spinner'
 import { useCart } from '@/hooks/useCart';
 
+
 export default function SingleService() {
     const { category, id } = useParams();
-    const [service, setService] = useState({});
+    const [service, setService] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [quantity, setQuantity] = useState(1); 
+    const [quantity, setQuantity] = useState(1);
     const [addedToCart, setAddedToCart] = useState(false); 
     const { addToCart } = useCart();
 
     useEffect(() => {
         const fetchService = async () => {
-            const serviceData = await getServiceByCategory(category, id);
+            const serviceData = await getSingleCategory(category, id);
             setService(serviceData);
             setLoading(false);
-            console.log(serviceData);
         };
         fetchService();
     }, [category, id]);
 
     const incrementQuantity = () => {
-        setQuantity(quantity + 1);
+        if (quantity < service.quantity) {
+            setQuantity(quantity + 1);
+        }
     };
 
     const decrementQuantity = () => {
@@ -33,12 +35,10 @@ export default function SingleService() {
     };
 
     const handleAddToCart = () => {
-        addToCart({ ...service, quantity });
+        addToCart({ ...service, quantity});
         if (!addedToCart) {
             setAddedToCart(true);
         }
-      
-        
     };
 
     return (
@@ -90,8 +90,8 @@ export default function SingleService() {
                             <button
                                 onClick={handleAddToCart}
                                 className={`${
-                                    addedToCart ? 'bg-gray-500 hover:bg-gray-700' : 'bg-green-500'
-                                } hover:bg-green-700 text-white font-bold py-2 px-4 rounded`}
+                                    addedToCart ? 'bg-gray-500 hover:bg-gray-700' : 'bg-green-500  hover:bg-green-700'
+                                } text-white font-bold py-2 px-4 rounded`}
                                 disabled={addedToCart} 
                             >
                                 {addedToCart ? 'Added' : 'Add to Cart'}
