@@ -7,12 +7,14 @@ import NotFound  from '@/views/NotFound';
 import Services from '@/views/Services';
 import Checkout from '@/views/Checkout';
 import { CartProvider } from './context/CartContext';
+import { SearchProvider } from './context/SearchContext';
 
 
 
 export default function App() {
     return (
         <>
+        <SearchProvider>
         <CartProvider>
             <main>
                 <BrowserRouter>
@@ -28,6 +30,7 @@ export default function App() {
                 </BrowserRouter>
             </main>
         </CartProvider>
+        </SearchProvider>
         </>
     );
 }

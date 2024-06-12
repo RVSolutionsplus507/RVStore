@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getCategory } from '@/services/firebase';
 import { useParams, Link } from 'react-router-dom';
 import { Grid } from 'react-loader-spinner';
+import { SearchContext } from '@/context/SearchContext';
 
 const Category = () => {
     const { category } = useParams();
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { searchQuery } = useContext(SearchContext);
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -17,7 +19,7 @@ const Category = () => {
         fetchServices();
     }, [category]);
 
-    const filteredServices = services.filter(service => service.category === category);
+    const filteredServices = services.filter(service => service.category === category && service.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
         <div className="flex flex-wrap justify-center items-center">

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from 'react-loader-spinner';
 import { useServices } from '@/hooks/useServices';
+import { SearchContext } from '@/context/SearchContext';
 
 const Services = () => {
     const { services, loading } = useServices();
+    const { searchQuery } = useContext(SearchContext);
+
+    const filteredServices = services.filter(service =>
+        service.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="mt-10 flex justify-center items-center">
@@ -22,7 +28,7 @@ const Services = () => {
             )}
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 justify-center items-center">
-                {services.map((service) => (
+                {filteredServices.map((service) => (
                     <div key={service.id} className="card bg-slate-100 rounded-t-xl shadow-lg text-center h-full">
                         <img src={service.image} alt={service.title} className="w-11/12 h-auto object-fit mx-auto rounded-t-xl mt-6" />
                         <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
